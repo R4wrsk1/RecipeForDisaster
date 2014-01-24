@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapelessRecipe;
+import org.bukkit.material.MaterialData;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class RecipeForDisaster extends JavaPlugin implements Listener {
@@ -24,10 +25,16 @@ public class RecipeForDisaster extends JavaPlugin implements Listener {
      */
     public void addRecipes() {
         //Cobblestone + Vine = Mossy Cobblestone
-        ShapelessRecipe cobbleToMossy = new ShapelessRecipe(new ItemStack(Material.MOSSY_COBBLESTONE));
-        cobbleToMossy.addIngredient(Material.COBBLESTONE);
-        cobbleToMossy.addIngredient(Material.VINE);
-        getServer().addRecipe(cobbleToMossy);
+        ShapelessRecipe cobbleToMossy = new ShapelessRecipe(new ItemStack(Material.MOSSY_COBBLESTONE)); //Block the shapeless recipe turns into
+        cobbleToMossy.addIngredient(Material.COBBLESTONE); //Ingredient #1
+        cobbleToMossy.addIngredient(Material.VINE); //Ingredient #2
+        getServer().addRecipe(cobbleToMossy); // Adds recipe to server
+
+        //Chiseled Stone Brick
+        ShapelessRecipe slabsToChiseled = new ShapelessRecipe(new ItemStack(Material.SMOOTH_BRICK, 1, (short) 3));
+        slabsToChiseled.addIngredient(Material.STEP, 5);
+        slabsToChiseled.addIngredient(Material.STEP, 5);
+        getServer().addRecipe(slabsToChiseled);
     }
 
     /**
