@@ -1,0 +1,9 @@
+author: Rawrski
+database: false
+description: Adds custom shape/shapeless block or item recipes to the game!
+generator: http://dinnerbone.com/minecraft/tools/pluginator/
+main: me.rawrski.plugins.recipefordisaster.RecipeForDisaster
+name: RecipeForDisaster
+startup: postworld
+url: http://dethemium.com/
+version: '1.0'
