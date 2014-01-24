@@ -16,25 +16,33 @@ public class RecipeForDisaster extends JavaPlugin implements Listener {
      */
     public void onEnable() {
         getServer().getPluginManager().registerEvents(this, this);
-        addRecipes();
+        mossyCobbleRecipe();
+        chiseledStoneBrickRecipe();
     }
 
-    /**
-     * Adds recipes to the server recipe list
-     */
-    public void addRecipes() {
-        //Cobblestone + Vine = Mossy Cobblestone
-        ShapelessRecipe cobbleToMossy = new ShapelessRecipe(new ItemStack(Material.MOSSY_COBBLESTONE)); //Block the shapeless recipe turns into
-        cobbleToMossy.addIngredient(Material.COBBLESTONE); //Ingredient #1
-        cobbleToMossy.addIngredient(Material.VINE); //Ingredient #2
-        getServer().addRecipe(cobbleToMossy); // Adds recipe to server
-
-        //Chiseled Stone Brick
-        ShapelessRecipe slabsToChiseled = new ShapelessRecipe(new ItemStack(Material.SMOOTH_BRICK, 1, (short) 3));
-        slabsToChiseled.addIngredient(Material.STEP, 5);
-        slabsToChiseled.addIngredient(Material.STEP, 5);
-        getServer().addRecipe(slabsToChiseled);
+    public void mossyCobbleRecipe() {
+        ShapelessRecipe recipe = new ShapelessRecipe(new ItemStack(Material.MOSSY_COBBLESTONE)); //Block the shapeless recipe turns into
+        recipe.addIngredient(Material.COBBLESTONE); //Ingredient #1
+        recipe.addIngredient(Material.VINE); //Ingredient #2
+        getServer().addRecipe(recipe); // Adds recipe to server
     }
+
+    public void chiseledStoneBrickRecipe() {
+        ShapelessRecipe recipe = new ShapelessRecipe(new ItemStack(Material.SMOOTH_BRICK, 1, (short) 3));
+        recipe.addIngredient(Material.STEP, 5);
+        recipe.addIngredient(Material.STEP, 5);
+        getServer().addRecipe(recipe);
+    }
+
+    /*
+    public void example() {
+        ShapedRecipe recipe = new ShapedRecipe(new ItemStack(Material.SMOOTH_STAIRS));
+        recipe.shape("saa", "ssa", "sss");
+        recipe.setIngredient('a', Material.AIR);
+        recipe.setIngredient('s', Material.SMOOTH_BRICK);
+        getServer().addRecipe(recipe);
+    }
+    */
 
     /**
      * Update the Players Inventory after one tick every successful craft to workaround a Bukkit Bug
