@@ -1,7 +1,10 @@
 package me.rawrski.plugins.recipefordisaster;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,6 +28,20 @@ public class RecipeForDisaster extends JavaPlugin implements Listener {
         cobbleToMossy.addIngredient(Material.COBBLESTONE);
         cobbleToMossy.addIngredient(Material.VINE);
         getServer().addRecipe(cobbleToMossy);
+    }
+
+    /**
+     * Update the Players Inventory after one tick every successful craft to workaround a Bukkit Bug
+     */
+    @EventHandler
+    public void onCraftItem(CraftItemEvent event) {
+        final Player player = (Player) event.getWhoClicked();
+        player.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+            @Override
+            public void run() {
+                player.updateInventory();
+            }
+        }, 1);
     }
 
 }
