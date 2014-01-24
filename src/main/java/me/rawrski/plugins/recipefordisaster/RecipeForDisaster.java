@@ -13,6 +13,7 @@ public class RecipeForDisaster extends JavaPlugin implements Listener {
      */
     public void onEnable() {
         getServer().getPluginManager().registerEvents(this, this);
+        addRecipes();
     }
 
     /**
@@ -20,8 +21,9 @@ public class RecipeForDisaster extends JavaPlugin implements Listener {
      */
     public void addRecipes() {
         //Cobblestone + Vine = Mossy Cobblestone
-        ShapelessRecipe cobbleToMossy = new ShapelessRecipe(new ItemStack(Material.MOSSY_COBBLESTONE))
-                .addIngredient(1, Material.COBBLESTONE).addIngredient(1, Material.VINE);
+        ShapelessRecipe cobbleToMossy = new ShapelessRecipe(new ItemStack(Material.MOSSY_COBBLESTONE));
+        cobbleToMossy.addIngredient(Material.COBBLESTONE);
+        cobbleToMossy.addIngredient(Material.VINE);
         getServer().addRecipe(cobbleToMossy);
     }
 
